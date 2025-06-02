@@ -9,73 +9,103 @@ pipeline {
 
   parameters {
     choice(name: 'ACTION', choices: ['init', 'plan', 'apply', 'destroy'], description: 'Terraform action to perform')
+    choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'prod'], description: 'Deployment environment')
+    string(name: 'TF_REPO_URL', defaultValue: 'https://github.com/nexgbitslabs/infra-terraform.git', description: 'Terraform Git repo URL')
+    string(name: 'TF_REPO_BRANCH', defaultValue: 'main', description: 'Terraform Git branch')
+    string(name: 'ANSIBLE_REPO_URL', defaultValue: 'https://github.com/nexgbitslabs/infra-ansible.git', description: 'Ansible Git repo URL')
+    string(name: 'ANSIBLE_REPO_BRANCH', defaultValue: 'main', description: 'Ansible Git branch')
+    booleanParam(name: 'RUN_ANSIBLE', defaultValue: true, description: 'Run Ansible playbook after Terraform apply?')
   }
 
   environment {
-    PROPERTIES_FILE = './jenkins-shared-library/infrastructure/terraform/backend-dev.properties'
+    TF_REPO_DIR = 'terraform'
+    ANSIBLE_REPO_DIR = 'ansible'
+    WORKSPACE_NAME = "${params.ENVIRONMENT}"
   }
 
   stages {
-    stage('Init') {
-      when {
-        expression { params.ACTION == 'init' }
-      }
+
+    stage('Validate Branches') {
       steps {
         script {
+          sh "git ls-remote --heads ${params.TF_REPO_URL} ${params.TF_REPO_BRANCH} || exit 1"
+          sh "git ls-remote --heads ${params.ANSIBLE_REPO_URL} ${params.ANSIBLE_REPO_BRANCH} || exit 1"
+        }
+      }
+    }
+
+    stage('Clone Terraform Repo') {
+      steps {
+        dir("${TF_REPO_DIR}") {
+          git url: params.TF_REPO_URL, branch: params.TF_REPO_BRANCH
+        }
+      }
+    }
+
+    stage('Clone Ansible Repo') {
+      steps {
+        dir("${ANSIBLE_REPO_DIR}") {
+          git url: params.ANSIBLE_REPO_URL, branch: params.ANSIBLE_REPO_BRANCH
+        }
+      }
+    }
+
+    stage('Terraform Action') {
+      steps {
+        script {
+          def tfvars = ''
+          def tfvarsFile = findFiles(glob: "${TF_REPO_DIR}/*.tfvars").firstOrNull()
+          if (tfvarsFile) {
+            tfvars = "-var-file=${tfvarsFile.path}"
+          }
+
           pipelineDeployWithTerraform([
-            propertiesFileName: env.PROPERTIES_FILE,
+            propertiesFileName: "${TF_REPO_DIR}/backend-${params.ENVIRONMENT}.properties",
+            terraformWorkingDir: TF_REPO_DIR,
+            terraformWorkspace: WORKSPACE_NAME,
+            terraformVarsFile: tfvars,
             jenkinJobInitialAgent: 'linux',
             jenkinsJobTimeOutInMinutes: 45,
-            action: 'init'
+            action: params.ACTION
           ])
         }
       }
     }
 
-    stage('Plan') {
+    stage('Archive Terraform Outputs') {
       when {
-        expression { params.ACTION == 'plan' }
+        anyOf {
+          expression { params.ACTION == 'plan' }
+          expression { params.ACTION == 'apply' }
+        }
       }
       steps {
-        script {
-          pipelineDeployWithTerraform([
-            propertiesFileName: env.PROPERTIES_FILE,
-            jenkinJobInitialAgent: 'linux',
-            jenkinsJobTimeOutInMinutes: 45,
-            action: 'plan'
-          ])
+        dir("${TF_REPO_DIR}") {
+          script {
+            sh '''
+              cp -f terraform.tfstate terraform.tfstate.${ENVIRONMENT} || true
+              cp -f plan.out plan.out.${ENVIRONMENT} || true
+            '''
+            archiveArtifacts artifacts: 'terraform/terraform.tfstate*', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'terraform/plan.out*', allowEmptyArchive: true
+          }
         }
       }
     }
 
-    stage('Apply') {
+    stage('Run Ansible Playbook') {
       when {
-        expression { params.ACTION == 'apply' }
-      }
-      steps {
-        script {
-          pipelineDeployWithTerraform([
-            propertiesFileName: env.PROPERTIES_FILE,
-            jenkinJobInitialAgent: 'linux',
-            jenkinsJobTimeOutInMinutes: 45,
-            action: 'apply'
-          ])
+        allOf {
+          expression { params.ACTION == 'apply' }
+          expression { params.RUN_ANSIBLE == true }
         }
       }
-    }
-
-    stage('Destroy') {
-      when {
-        expression { params.ACTION == 'destroy' }
-      }
       steps {
-        script {
-          pipelineDeployWithTerraform([
-            propertiesFileName: env.PROPERTIES_FILE,
-            jenkinJobInitialAgent: 'linux',
-            jenkinsJobTimeOutInMinutes: 45,
-            action: 'destroy'
-          ])
+        dir("${ANSIBLE_REPO_DIR}") {
+          sh '''
+            echo "Running Ansible Playbook..."
+            ansible-playbook -i inventory.ini site.yml
+          '''
         }
       }
     }
