@@ -12,7 +12,7 @@ pipeline {
   }
 
   environment {
-    PROPERTIES_FILE = 'backend-dev.properties'
+    PROPERTIES_FILE = './jenkins-shared-library/infrastructure/terraform/backend-dev.properties'
   }
 
   stages {
