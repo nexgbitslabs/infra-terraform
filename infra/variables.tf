@@ -1,5 +1,11 @@
+variable "resource_group_name" {
+  description = "Name of the resource group"
+  type        = string
+  default     = "rg-testval"
+}
+
 variable "location" {
-  description = "Region to install Azure resources"
-  type = string
-  default = "Canada Central"
+  description = "Azure region"
+  type        = string
+  default     = "canadacentral"
 }
