@@ -1,2 +1,3 @@
 location           = "canadacentral"
-resource_group_name = "shl-test"
+resource_group_name = "rg-testval"
+environment = "dev"

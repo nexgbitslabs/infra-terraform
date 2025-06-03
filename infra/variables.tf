@@ -9,3 +9,9 @@ variable "location" {
   type        = string
   default     = "canadacentral"
 }
+
+variable "environment" {
+  description = "Azure region"
+  type        = string
+  default     = "dev"
+}
