@@ -1,7 +1,7 @@
 @Library('jenkins-shared-library') _
 
 pipelineDeployWithTerraform([
-  propertiesFileName: 'backend-dev.properties',
+  propertiesFileName: 'dev.properties',
   jenkinJobInitialAgent: 'linux',
   jenkinsJobTimeOutInMinutes: 45
 ])
