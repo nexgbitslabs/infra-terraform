@@ -1,6 +1,6 @@
 provider "azurerm" {
-      subscription_id = var.subscription_id
-    }
+  features {}
+}
 
 module "resource_group" {
   source   = "../../../@libs/jenkins-shared-library/modules/resource_group"
