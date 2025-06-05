@@ -4,6 +4,3 @@
   --role contributor \
   --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID> \
   --sdk-auth```
-
-
-## added stuff new changes test Test again again
