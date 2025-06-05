@@ -2,15 +2,17 @@
 
 properties([
   parameters([
+    choice(name: 'ACTION', choices: ['init', 'plan', 'apply', 'destroy'], description: 'Terraform action to perform'),
     choice(name: 'ENVIRONMENT', choices: ['dev', 'uat', 'prod'], description: 'Deployment environment'),
-    string(name: 'PLAYBOOK', defaultValue: 'site.yml', description: 'Playbook to run'),
+    string(name: 'MODULE_PATH', defaultValue: 'infra/backend', description: 'Terraform module path'),
   ])
 ])
 
 pipelineDeploy([
-  deploymentType: 'ansible',
+  deploymentType: 'terraform',
+  action: params.ACTION,
   environment: params.ENVIRONMENT,
-  ansibleRepoUrl: 'https://github.com/nexgbitslabs/infra-ansible.git',
-  ansibleRepoBranch: 'main',
-  playbook: params.PLAYBOOK
+  modulePath: params.MODULE_PATH,
+  repoUrl: 'https://github.com/nexgbitslabs/infra-terraform.git',
+  tfRepoBranch: 'main'
 ])
