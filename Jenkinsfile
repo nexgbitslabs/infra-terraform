@@ -4,7 +4,7 @@ properties([
   parameters([
     choice(name: 'ACTION', choices: ['init', 'plan', 'apply', 'destroy'], description: 'Terraform action to perform'),
     choice(name: 'ENVIRONMENT', choices: ['dev', 'uat', 'prod'], description: 'Deployment environment'),
-    string(name: 'MODULE_PATH', defaultValue: 'infra/backend', description: 'Terraform module path'),
+    string(name: 'MODULE_PATH', defaultValue: 'backend', description: 'Terraform module path'),
   ])
 ])
 
