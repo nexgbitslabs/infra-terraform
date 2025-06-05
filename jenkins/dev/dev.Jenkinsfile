@@ -9,4 +9,3 @@ pipelineDeployWithTerraform([
   jenkinJobInitialAgent: 'linux',
   jenkinsJobTimeOutInMinutes: 45
 ])
-
