@@ -4,7 +4,7 @@ properties([
   parameters([
     choice(name: 'TYPE', choices: ['terraform', 'aks', 'ansible', 'apim'], description: 'Deployment type'),
     string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Deployment environment'),
-    string(name: 'MODULE_PATH', defaultValue: 'resource-group', description: 'Deployment module path'),
+    string(name: 'MODULE_PATH', defaultValue: '', description: 'Deployment module path'),
     string(name: 'REPO_URL', defaultValue: 'https://github.com/nexgbitslabs/infra-terraform.git', description: 'Git repo URL for deployment'),
     string(name: 'REPO_BRANCH', defaultValue: 'main', description: 'Branch of the repo to checkout'),
     string(name: 'ACTION', defaultValue: 'plan', description: 'Terraform action'),
