@@ -4,7 +4,3 @@
   --role contributor \
   --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID> \
   --sdk-auth```
-
-  
-
-## testing asdfs

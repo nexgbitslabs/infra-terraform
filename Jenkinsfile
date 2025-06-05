@@ -1,5 +1,3 @@
-
-D** Jenkinsfile content.
 @Library('jenkins-shared-library') _
 
 properties([
@@ -18,3 +16,4 @@ pipelineDeploy([
   repoUrl: 'https://github.com/nexgbitslabs/infra-terraform.git',
   tfRepoBranch: 'main'
 ])
+
