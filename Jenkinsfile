@@ -16,4 +16,3 @@ pipelineDeploy([
   repoUrl: 'https://github.com/nexgbitslabs/infra-terraform.git',
   tfRepoBranch: 'main'
 ])
-
