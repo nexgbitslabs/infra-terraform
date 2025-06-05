@@ -3,4 +3,4 @@
 ```az ad sp create-for-rbac --name "jenkins-sp" \
   --role contributor \
   --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID> \
-  --sdk-auth```
+  --sdk-auth``` sfsfsdf
