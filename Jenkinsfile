@@ -25,4 +25,3 @@ pipelineDeploy(
   sharedLibraryUrl: params.SHARED_LIBRARY_URL,
   sharedLibraryBranch: params.SHARED_LIBRARY_BRANCH
 )
-
