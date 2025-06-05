@@ -9,7 +9,7 @@ properties([
     string(name: 'REPO_BRANCH', defaultValue: 'main', description: 'Branch of the repo to checkout'),
     string(name: 'ACTION', defaultValue: 'plan', description: 'Terraform action'),
     booleanParam(name: 'CHECKOUT_SHARED_LIBRARY', defaultValue: true, description: 'Checkout shared library into workspace?'),
-    string(name: 'SHARED_LIBRARY_URL', defaultValue: 'https://github.com/yourorg/jenkins-shared-library.git', description: 'Shared library repo URL'),
+    string(name: 'SHARED_LIBRARY_URL', defaultValue: 'https://github.com/nexgbitslabs/jenkins-shared-library.git', description: 'Shared library repo URL'),
     string(name: 'SHARED_LIBRARY_BRANCH', defaultValue: 'main', description: 'Branch of the shared library')
   ])
 ])
