@@ -6,7 +6,7 @@ properties([
     string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Deployment environment'),
     string(name: 'REPO_URL', defaultValue: 'https://github.com/nexgbitslabs/infra-terraform.git', description: 'Git repo URL for deployment'),
     string(name: 'REPO_BRANCH', defaultValue: 'main', description: 'Branch of the repo to checkout'),
-    choice(name: 'ACTION', defaultValue: ['init', 'plan', 'apply', 'destroy'], description: 'Terraform action'),
+    choice(name: 'ACTION', choices: ['init', 'plan', 'apply', 'destroy'], description: 'Terraform action'),
     booleanParam(name: 'CHECKOUT_SHARED_LIBRARY', defaultValue: true, description: 'Checkout shared library into workspace?'),
     string(name: 'SHARED_LIBRARY_URL', defaultValue: 'https://github.com/nexgbitslabs/jenkins-shared-library.git', description: 'Shared library repo URL'),
     string(name: 'SHARED_LIBRARY_BRANCH', defaultValue: 'main', description: 'Branch of the shared library')
