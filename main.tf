@@ -9,7 +9,7 @@ module "resource_group" {
 module "hub_vnet" {
   source              = "./modules/vnet"  # or wherever the vnet module is stored
   hub_vnet_name       = var.hub_vnet_name
-  address_space       = var.hub_vnet_address_space
+  hub_vnet_address_space  = var.hub_vnet_address_space
   location            = var.location
   resource_group_name = var.resource_group_name
   subnets             = var.hub_vnet_subnets
