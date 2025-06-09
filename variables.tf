@@ -26,4 +26,8 @@ variable "container_name" {
    description = "Size of the VMs"
 }
 
+variable "hub_vnet_name" {
+  description = "value"
+}
+
 
