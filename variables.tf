@@ -49,6 +49,16 @@ variable "subnets" {
   description = "value"
 }
 
+variable "tags" {
+  type = map(string)
+  default = {}
+}
+
+variable "environment" {
+  description = "value"
+  default = "dev"
+}
+
 # variable "connection_name" {
 #   type = string
 # }
