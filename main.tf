@@ -37,7 +37,7 @@ module "private_endpoint" {
   subnet_id             = module.hub_vnet.subnet_ids["PrivateLinkSubnet"]
   connection_name       = var.connection_name
   resource_id           = var.resource_id
-  subresource_name      = var.subresource_name
+  subresource_name      = var.subresource_names
 
   depends_on = [ module.hub_vnet ]
 }

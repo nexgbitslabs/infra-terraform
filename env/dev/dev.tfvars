@@ -32,3 +32,4 @@ nat_gw_name      = "nat-gateway"
 prefix                = "pip-dev-prefix"
 firewall_name    = "fw-main"
 firewall_pip_name = "fw-pip"
+subresource_names = ["blob", "file", "queue", "table"]
