@@ -7,18 +7,16 @@ container_name       = "tfstate-nb01"
 
 hub_vnet_name = "hub-vnet"
 hub_vnet_address_space       = ["10.100.0.0/16"]
-subnets = [
-  {
-    name                  = "AzureFirewallSubnet"
+subnets = {
+  AzureFirewallSubnet = {
     address_prefixes      = ["10.100.1.0/24"]
     allowPrivateEndpoints = false
   },
-  {
-    name                  = "PrivateLinkSubnet"
+  PrivateLinkSubnet = {
     address_prefixes      = ["10.100.2.0/24"]
     allowPrivateEndpoints = true
   }
-]
+}
 dns_servers = {
   primary   = "8.8.8.8"
   secondary = "8.8.4.4"
