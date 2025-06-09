@@ -12,7 +12,7 @@ module "hub_vnet" {
   hub_vnet_address_space  = var.hub_vnet_address_space
   location            = var.location
   resource_group_name = var.resource_group_name
-  subnets             = var.hub_vnet_subnets
+  subnets             = var.subnets
   environment         = var.environment
   dns_servers         = var.dns_servers
 
