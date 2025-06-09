@@ -4,14 +4,6 @@ module "resource_group" {
   name                = var.resource_group_name
   location            = var.location
   environment         = var.environment
-
-  tags = merge(
-    locals.common_tags, {
-      Environment = var.environment
-      Owner = "Valentine Akem"
-      Provisioner = "Terraform"
-    }
-  )
 }
 
 module "hub_vnet" {
