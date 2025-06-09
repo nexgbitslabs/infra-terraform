@@ -46,9 +46,26 @@ variable "address_space" {
 }
 
 variable "subnets" {
-  description = "value"
+  description = "Map of subnets for the Hub VNet"
+  type        = map(object({
+    name             = string
+    address_prefixes = list(string)
+    service_endpoints = optional(list(string))
+    delegation       = optional(object({
+      name = string
+      service_delegation = object({
+        name = string
+        actions = list(string)
+      })
+    }))
+  }))
 }
 
+variable "dns_servers" {
+  description = "DNS servers for the VNet"
+  type        = map(string)
+  default     = {}
+}
 variable "environment" {
   description = "value"
 }
