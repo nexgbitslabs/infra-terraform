@@ -4,17 +4,33 @@ module "resource_group" {
   name                = var.resource_group_name
   location            = var.location
   environment         = var.environment
+
+  tags = merge(
+    locals.common_tags, {
+      Environment = var.environment
+      Owner = "Valentine Akem"
+      Provisioner = "Terraform"
+    }
+  )
 }
 
 module "hub_vnet" {
   source              = "./modules/vnet"  # or wherever the vnet module is stored
-  vnet_name           = var.hub_vnet_name
+  name                = var.hub_vnet_name
   address_space       = var.hub_vnet_address_space
   location            = var.location
   resource_group_name = var.resource_group_name
   subnets             = var.hub_vnet_subnets
 
   depends_on = [ module.resource_group ]
+
+    tags = merge(
+    locals.common_tags, {
+      Environment = var.environment
+      Owner = "Valentine Akem"
+      Provisioner = "Terraform"
+    }
+  )
 }
 
 # NAT GATEWAY MODULE
@@ -26,6 +42,14 @@ module "nat_gateway" {
   resource_group_name = var.resource_group_name
   subnet_id           = module.hub_vnet.subnet_ids["AzureFirewallSubnet"]
   environment         = var.environment
+
+  tags = merge(
+    locals.common_tags, {
+      Environment = var.environment
+      Owner = "Valentine Akem"
+      Provisioner = "Terraform"
+    }
+  )
 
   depends_on = [ module.hub_vnet ]
 }
