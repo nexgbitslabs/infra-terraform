@@ -1,18 +1,20 @@
-variable "subscriptionid" {}
-variable "environment" {
-  description = "Gets added as a tag to identify the deployment as production, development or test"
-}
-variable "prefix" {
-  description = "Many named items will be prefixed with this value to prevent duplication"
-}
 variable "location" {
-  description = "The resource group location"
-}
-variable "resource_group_name" {
-  description = "name of the keyvault to be created to store the names of each tenant keyvault"
+  description = "Location of the network"
+  default     = "eastus"
 }
 
-variable "hub_vnet_name" {
-  description = "Hub VNET name"
-  default     = "vnet-hub"
+variable "username" {
+  description = "Username for Virtual Machines"
+  default     = "azureuser"
+}
+
+variable "password" {
+  description = "Password for Virtual Machines"
+  sensitive   = true
+  default     = null
+}
+
+variable "vmsize" {
+  description = "Size of the VMs"
+  default     = "Standard_DS1_v2"
 }
