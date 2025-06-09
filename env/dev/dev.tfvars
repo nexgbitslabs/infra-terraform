@@ -7,8 +7,6 @@ container_name       = "tfstate-nb01"
 
 vnet_name           = "hub-vnet"
 address_space       = ["10.100.0.0/16"]
-location            = "eastus"
-
 subnets = [
   {
     name                  = "AzureFirewallSubnet"
