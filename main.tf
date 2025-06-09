@@ -1,3 +1,8 @@
+resource "azurerm_resource_group" "this" {
+  name = var.resource_group_name
+  location = var.location
+}
+
 resource "azurerm_virtual_network" "vnet" {
   name                = "test"
   location            = var.location
@@ -25,4 +30,5 @@ resource "azurerm_public_ip" "this" {
   resource_group_name = var.resource_group_name
 
   allocation_method = "Dynamic"
+  sku                 = "Basic"
 }
