@@ -6,7 +6,7 @@ storage_account_name = "tfstateaccountnb01"
 container_name       = "tfstate-nb01"
 
 hub_vnet_name = "hub-vnet"
-address_space       = ["10.100.0.0/16"]
+hub_vnet_address_space       = ["10.100.0.0/16"]
 subnets = [
   {
     name                  = "AzureFirewallSubnet"
