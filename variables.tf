@@ -3,10 +3,6 @@ variable "location" {
   default     = "candacentral"
 }
 
-variable "virtual_network_name" {
-  description = "Size of the VMs"
-}
-
 variable "resource_group_name" {
   description = "Size of the VMs"
 }
@@ -26,12 +22,6 @@ variable "hub_vnet_name" {
   description = "value"
   default     = "hub-vnet"
 }
-
-variable "virtual_network_name" {
-  type        = string
-  description = "Name of the Virtual Network"
-}
-
 variable "nat_gw_name" {
   type        = string
   description = "Name of the NAT Gateway"

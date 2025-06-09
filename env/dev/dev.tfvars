@@ -19,7 +19,6 @@ subnets = [
     allowPrivateEndpoints = true
   }
 ]
-virtual_network_name  = "hub-vnet"
 pip_name         = "nat-pip"
 nat_gw_name      = "nat-gateway"
 
@@ -30,6 +29,6 @@ nat_gw_name      = "nat-gateway"
 
 # dns_zone_name    = "privatelink.blob.core.windows.net"
 # kube_vnet_id     = "/subscriptions/.../resourceGroups/xxx/providers/Microsoft.Network/virtualNetworks/kube-vnet"
-
+prefix                = "pip-dev-prefix"
 firewall_name    = "fw-main"
 firewall_pip_name = "fw-pip"
