@@ -70,6 +70,11 @@ variable "dns_servers" {
 variable "environment" {
   description = "value"
 }
+
+variable "pip_name" {
+  description = "Name of the public IP used by the NAT gateway"
+  type        = string
+}
 # variable "connection_name" {
 #   type = string
 # }
