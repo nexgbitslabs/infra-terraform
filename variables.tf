@@ -44,3 +44,9 @@ variable "firewall_name" {
 variable "firewall_pip_name" {
   description = "value"
 }
+
+
+variable "prefix" {
+  type        = string
+  description = "Name of the Public IP Prefix"
+}
