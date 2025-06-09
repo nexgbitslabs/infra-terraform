@@ -14,9 +14,6 @@ variable "shared_resource_group_name" {
 variable "shared_keyvault_id" {
   description = "Environment's shared keyvault created and variables filled before running the Terraform"
 }
-variable "rabbitmq_fqdn" {
-  description = "The FQDN of the rabbitmq server used in this deployment"
-}
 variable "vaults_names_keyvault" {
   description = "name of the keyvault to be created to store the names of each tenant keyvault"
 }
@@ -36,11 +33,6 @@ variable "nbdev_resource_group_name" {
 variable "vaults_resource_group_name" {
   description = "The resource group name to be created"
   default     = "vaults"
-}
-
-variable "dns_resource_group_name" {
-  description = "The resource group name to be created"
-  default     = "dns"
 }
 
 variable "hub_vnet_name" {
