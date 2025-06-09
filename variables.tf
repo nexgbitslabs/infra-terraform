@@ -1,20 +1,12 @@
 variable "location" {
   description = "Location of the network"
-  default     = "eastus"
+  default     = "candacentral"
 }
 
-variable "username" {
-  description = "Username for Virtual Machines"
-  default     = "azureuser"
-}
-
-variable "password" {
-  description = "Password for Virtual Machines"
-  sensitive   = true
-  default     = null
-}
-
-variable "vmsize" {
+variable "virtual_network_name" {
   description = "Size of the VMs"
-  default     = "Standard_DS1_v2"
+}
+
+variable "resource_group_name" {
+  description = "Size of the VMs"
 }
