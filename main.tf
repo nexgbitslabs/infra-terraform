@@ -1,4 +1,10 @@
 # VNET MODULE
+module "resource_group" {
+  source              = "./modules/vnet"
+  name                = var.resource_group_name
+  location            = var.location
+}
+
 module "hub_vnet" {
   source              = "./modules/vnet"
   vnet_name           = var.vnet_name
@@ -6,6 +12,8 @@ module "hub_vnet" {
   location            = var.location
   resource_group_name = var.resource_group_name
   subnets             = var.subnets
+
+  depends_on = [ module.resource_group ]
 }
 
 # NAT GATEWAY MODULE
