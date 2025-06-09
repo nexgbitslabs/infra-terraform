@@ -41,9 +41,9 @@ variable "prefix" {
   description = "Name of the Public IP Prefix"
 }
 
-variable "connection_name" {
-  type = string
-}
+# variable "connection_name" {
+#   type = string
+# }
 
 # variable "resource_id" {
 #   type = string
