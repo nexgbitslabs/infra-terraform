@@ -15,10 +15,6 @@ variable "subscription_id" {
    description = "Size of the VMs"
 }
 
-variable "prefix" {
-   description = "Size of the VMs"
-}
-
 variable "storage_account_name" {
    description = "Size of the VMs"
 }
@@ -31,4 +27,26 @@ variable "hub_vnet_name" {
   default     = "hub-vnet"
 }
 
+variable "virtual_network_name" {
+  type        = string
+  description = "Name of the Virtual Network"
+}
 
+variable "nat_gw_name" {
+  type        = string
+  description = "Name of the NAT Gateway"
+}
+
+variable "firewall_name" {
+  description = "value"
+}
+
+variable "firewall_pip_name" {
+  description = "value"
+}
+
+
+variable "prefix" {
+  type        = string
+  description = "Name of the Public IP Prefix"
+}

@@ -19,7 +19,7 @@ subnets = [
     allowPrivateEndpoints = true
   }
 ]
-
+virtual_network_name  = "hub-vnet"
 pip_name         = "nat-pip"
 nat_gw_name      = "nat-gateway"
 
