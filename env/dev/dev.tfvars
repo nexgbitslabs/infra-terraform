@@ -5,7 +5,7 @@ subscription_id = "a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf"
 storage_account_name = "tfstateaccountnb01"
 container_name       = "tfstate-nb01"
 
-vnet_name           = "hub-vnet"
+vnet_name           = "hub_vnet_name"
 address_space       = ["10.100.0.0/16"]
 subnets = [
   {
