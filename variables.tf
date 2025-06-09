@@ -41,6 +41,14 @@ variable "prefix" {
   description = "Name of the Public IP Prefix"
 }
 
+variable "address_space" {
+  description = "value"
+}
+
+variable "subnets" {
+  description = "value"
+}
+
 # variable "connection_name" {
 #   type = string
 # }
