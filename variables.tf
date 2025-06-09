@@ -49,7 +49,6 @@ variable "subnets" {
   description = "value"
 }
 
-
 # variable "connection_name" {
 #   type = string
 # }
