@@ -41,8 +41,9 @@ variable "prefix" {
   description = "Name of the Public IP Prefix"
 }
 
-variable "address_space" {
-  description = "value"
+variable "hub_vnet_address_space" {
+  description = "Address space for the VNet"
+  type        = list(string)
 }
 
 variable "subnets" {
