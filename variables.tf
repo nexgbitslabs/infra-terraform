@@ -28,6 +28,7 @@ variable "container_name" {
 
 variable "hub_vnet_name" {
   description = "value"
+  default     = "hub-vnet"
 }
 
 
