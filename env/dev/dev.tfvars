@@ -19,8 +19,8 @@ subnets = [
     allowPrivateEndpoints = true
   }
 ]
-pip_name         = "nat-pip"
-nat_gw_name      = "nat-gateway"
+# pip_name         = "nat-pip"
+# nat_gw_name      = "nat-gateway"
 
 # pe_name          = "private-endpoint"
 # connection_name  = "pe-conn"
@@ -30,6 +30,8 @@ nat_gw_name      = "nat-gateway"
 # dns_zone_name    = "privatelink.blob.core.windows.net"
 # kube_vnet_id     = "/subscriptions/.../resourceGroups/xxx/providers/Microsoft.Network/virtualNetworks/kube-vnet"
 prefix                = "pip-dev-prefix"
-firewall_name    = "fw-main"
-firewall_pip_name = "fw-pip"
-subresource_names = ["blob", "file", "queue", "table"]
+# firewall_name    = "fw-main"
+# firewall_pip_name = "fw-pip"
+# subresource_names = ["blob", "file", "queue", "table"]
+# resource_id = ""
+# connection_name = ""
