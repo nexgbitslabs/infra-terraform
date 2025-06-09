@@ -3,6 +3,7 @@ module "resource_group" {
   source              = "./modules/resource_group"
   name                = var.resource_group_name
   location            = var.location
+  environment         = var.environment
 }
 
 module "hub_vnet" {
@@ -12,6 +13,7 @@ module "hub_vnet" {
   location            = var.location
   resource_group_name = var.resource_group_name
   subnets             = var.subnets
+  environment         = var.environment
 
   depends_on = [ module.resource_group ]
 }
@@ -24,6 +26,7 @@ module "nat_gateway" {
   location            = var.location
   resource_group_name = var.resource_group_name
   subnet_id           = module.hub_vnet.subnet_ids["AzureFirewallSubnet"]
+  environment         = var.environment
 
   depends_on = [ module.hub_vnet ]
 }
