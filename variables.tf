@@ -45,11 +45,11 @@ variable "connection_name" {
   type = string
 }
 
-variable "resource_id" {
-  type = string
-}
+# variable "resource_id" {
+#   type = string
+# }
 
-variable "subresource_names" {
-  type        = list(string)
-  description = "List of subresource names to connect to (e.g., ['blob'], ['vault'])"
-}
+# variable "subresource_names" {
+#   type        = list(string)
+#   description = "List of subresource names to connect to (e.g., ['blob'], ['vault'])"
+# }
