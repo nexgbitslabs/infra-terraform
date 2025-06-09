@@ -47,18 +47,9 @@ variable "hub_vnet_address_space" {
 }
 
 variable "subnets" {
-  description = "Map of subnets for the Hub VNet"
-  type        = map(object({
-    name             = string
-    address_prefixes = list(string)
-    service_endpoints = optional(list(string))
-    delegation       = optional(object({
-      name = string
-      service_delegation = object({
-        name = string
-        actions = list(string)
-      })
-    }))
+  type = map(object({
+    address_prefixes      = list(string)
+    allowPrivateEndpoints = bool
   }))
 }
 
