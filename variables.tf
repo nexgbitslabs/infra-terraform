@@ -27,10 +27,6 @@ variable "nat_gw_name" {
   description = "Name of the NAT Gateway"
 }
 
-variable "firewall_name" {
-  description = "value"
-}
-
 variable "firewall_pip_name" {
   description = "value"
 }
@@ -65,6 +61,10 @@ variable "environment" {
 variable "pip_name" {
   description = "Name of the public IP used by the NAT gateway"
   type        = string
+}
+
+variable "firewall_name" {
+  
 }
 # variable "connection_name" {
 #   type = string
