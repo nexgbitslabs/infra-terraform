@@ -56,15 +56,15 @@ resource "azurerm_private_dns_zone" "privatednszone" {
 
 # FIREWALL MODULE
 module "firewall" {
-  source              = "./modules/firewall"
+   source              = "./modules/firewall"
   location            = var.location
   resource_group_name = var.resource_group_name
-  vnet_name           = var.vnet_name
-  subnet_id           = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
   firewall_name       = var.firewall_name
-  public_ip_name      = var.firewall_pip_name
+  firewall_pip_name   = var.firewall_pip_name
+  subnet_id           = [
+    "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
+  ]
 
-  environment = var.environment
 
   depends_on = [ module.hub_vnet ]
 }
