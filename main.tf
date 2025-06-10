@@ -56,14 +56,11 @@ resource "azurerm_private_dns_zone" "privatednszone" {
 
 # FIREWALL MODULE
 module "firewall" {
-   source              = "./modules/firewall"
+  source              = "./modules/firewall"
   location            = var.location
   resource_group_name = var.resource_group_name
   firewall_name       = var.firewall_name
   firewall_pip_name   = var.firewall_pip_name
-  subnet_id           = var.firewall_subnet_id
-
-
 
   depends_on = [ module.hub_vnet ]
 }
