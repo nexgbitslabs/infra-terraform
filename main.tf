@@ -49,15 +49,9 @@ module "nat_gateway" {
 # }
 
 # PRIVATE DNS ZONE MODULE
-module "private_dns_zone" {
-  source              = "./modules/private_dns_zone"
-  name                = var.dns_zone_name
+resource "azurerm_private_dns_zone" "privatednszone" {
+  name                = "nexgbitsacademy.com"
   resource_group_name = var.resource_group_name
-  vnet_ids            = {
-    hub_vnet = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet"
-  }
-
-  depends_on = [ module.hub_vnet ]
 }
 
 # FIREWALL MODULE
@@ -69,6 +63,8 @@ module "firewall" {
   subnet_id           = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
   firewall_name       = var.firewall_name
   public_ip_name      = var.firewall_pip_name
+
+  environment = var.environment
 
   depends_on = [ module.hub_vnet ]
 }
