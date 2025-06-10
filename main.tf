@@ -49,26 +49,26 @@ module "nat_gateway" {
 # }
 
 # PRIVATE DNS ZONE MODULE
-# module "private_dns_zone" {
-#   source              = "./modules/private_dns_zone"
-#   name                = var.dns_zone_name
-#   resource_group_name = var.resource_group_name
-#   vnet_ids            = {
-#     hub_vnet = module.hub_vnet.vnet_id
-#   }
+module "private_dns_zone" {
+  source              = "./modules/private_dns_zone"
+  name                = var.dns_zone_name
+  resource_group_name = var.resource_group_name
+  vnet_ids            = {
+    hub_vnet = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet"
+  }
 
-#   depends_on = [ module.hub_vnet ]
-# }
+  depends_on = [ module.hub_vnet ]
+}
 
 # FIREWALL MODULE
-# module "firewall" {
-#   source              = "./modules/firewall"
-#   location            = var.location
-#   resource_group_name = var.resource_group_name
-#   vnet_name           = var.vnet_name
-#   subnet_id           = module.hub_vnet.subnet_ids["AzureFirewallSubnet"]
-#   firewall_name       = var.firewall_name
-#   public_ip_name      = var.firewall_pip_name
+module "firewall" {
+  source              = "./modules/firewall"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  vnet_name           = var.vnet_name
+  subnet_id           = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
+  firewall_name       = var.firewall_name
+  public_ip_name      = var.firewall_pip_name
 
-#   depends_on = [ module.hub_vnet ]
-# }
+  depends_on = [ module.hub_vnet ]
+}
