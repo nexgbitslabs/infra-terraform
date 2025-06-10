@@ -61,9 +61,8 @@ module "firewall" {
   resource_group_name = var.resource_group_name
   firewall_name       = var.firewall_name
   firewall_pip_name   = var.firewall_pip_name
-  subnet_id           = [
-    "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
-  ]
+  subnet_id           = var.firewall_subnet_id
+
 
 
   depends_on = [ module.hub_vnet ]

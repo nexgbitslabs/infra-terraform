@@ -64,7 +64,12 @@ variable "pip_name" {
 }
 
 variable "firewall_name" {
-  
+  description = "value"
+}
+
+variable "firewall_subnet_id" {
+  description = "value"
+  type = string
 }
 # variable "connection_name" {
 #   type = string

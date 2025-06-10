@@ -28,13 +28,12 @@ nat_gw_name      = "nat-gateway"
 # connection_name  = "pe-conn"
 # resource_id      = "/subscriptions/.../resourceGroups/xxx/providers/Microsoft.Storage/storageAccounts/xxx"
 # subresource_name = "blob"
-
 # dns_zone_name    = "privatelink.blob.core.windows.net"
 # kube_vnet_id     = "/subscriptions/.../resourceGroups/xxx/providers/Microsoft.Network/virtualNetworks/kube-vnet"
 prefix                = "pip-dev-prefix"
 firewall_name    = "fw-main"
 firewall_pip_name = "fw-pip"
-
+firewall_subnet_id = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
 
 # subresource_names = ["blob", "file", "queue", "table"]
 # resource_id = ""
