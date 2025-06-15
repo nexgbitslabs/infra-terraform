@@ -81,7 +81,7 @@ module "eventhub_cluster" {
 }
 
 module "eventhub_namespace" {
-  source                  = "./modules/eventhub_resources/eventhub_namespace"
+  source                  = "./modules/eventhub_resources/eventhub_namespaces"
   name                    = var.namespace_name
   resource_group_name     = var.resource_group_name
   location                = var.location
