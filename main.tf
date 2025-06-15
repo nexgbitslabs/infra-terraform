@@ -46,11 +46,12 @@ module "nat_gateway" {
 
 
 
-module "assign_contributor_role" {
-  source            = "./modules/roles_and_permissions"
-  scope             = data.azurerm_subscription.current.id
-  role_definition_id = data.azurerm_role_definition.contributor.id
-  principal_id      = data.azurerm_client_config.current.object_id
+module "role_assignment" {
+  source = "./modules/roles_and_permissions"
+
+  scope             = var.scope
+  role_definition_id = var.role_definition_id
+  principal_id      = var.principal_id
   description       = "Assign Contributor role to current user"
 }
 
@@ -115,8 +116,8 @@ module "consumer_group" {
 module "schema_group" {
   source              = "./modules/eventhub_resources/eventhub_namespace_schema"
   name                = var.schema_group_name
-  namespace_id     = module.eventhub_namespace.id
   resource_group_name = var.resource_group_name
+  namespace_id        = module.eventhub_namespace.id 
   group_properties    = var.schema_group_properties
 }
 
