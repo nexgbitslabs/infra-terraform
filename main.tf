@@ -121,7 +121,7 @@ module "schema_group" {
 }
 
 module "role_assignment" {
-  source = "./module/resource-group"
+  source = "./module/resource_group"
 
   scope            = var.scope
   role_assignments = var.role_assignments
