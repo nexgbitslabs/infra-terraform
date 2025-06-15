@@ -39,6 +39,10 @@ variable "firewall_pip_name" {
   description = "value"
 }
 
+variable "cluster_name" {
+  type        = string
+  description = "The name of the Event Hub Cluster"
+}
 
 variable "prefix" {
   type        = string
