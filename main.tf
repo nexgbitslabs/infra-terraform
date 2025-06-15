@@ -29,6 +29,7 @@ module "hub_vnet" {
   subnets             = var.subnets
   environment         = var.environment
   dns_servers         = var.dns_servers
+  security_gp_name    = var.security_gp_name
 
   depends_on = [ module.resource_group ]
 }

@@ -25,7 +25,10 @@ variable "cluster_name" {
   description = "The name of the Event Hub Cluster"
 }
 
-
+variable "security_gp_name" {
+    type        = string
+  description = "The name of the Event Hub Cluster"
+}
 variable "storage_account_name" {
    description = "Size of the VMs"
 }
