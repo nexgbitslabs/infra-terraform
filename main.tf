@@ -126,7 +126,7 @@ module "schema_group" {
   group_properties    = var.schema_group_properties
 }
 
-module "assign_contributor_role" {
+module "assign_contributor_role_schema" {
   source = "./modules/roles_and_permissions"
   scope  = data.azurerm_subscription.current.id
 
