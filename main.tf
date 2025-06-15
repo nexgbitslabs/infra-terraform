@@ -105,7 +105,7 @@ module "eventhub_namespace" {
 
 module "eventhub" {
   source              = "./modules/eventhub_resources/eventhub"
-  namespace_id      = module.eventhub_namespace.id
+  eventhub_name        = var.eventhub_name
   resource_group_name = var.infra_resource_group_name
   location            = var.location
   partition_count     = var.partition_count
