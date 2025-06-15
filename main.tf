@@ -126,11 +126,18 @@ module "schema_group" {
   group_properties    = var.schema_group_properties
 }
 
-module "role_assignment" {
+module "assign_contributor_role" {
   source = "./modules/roles_and_permissions"
+  scope  = data.azurerm_subscription.current.id
 
-  scope             = var.scope
-  role_definition_id = var.role_definition_id
-  principal_id      = var.principal_id
-  description       = "Assign Contributor role to current user"
+  role_assignments = {
+    "Contributor" = [
+      {
+        principal_id    = data.azurerm_client_config.current.object_id
+        user_name       = "CurrentUser"
+        description     = "Assign Contributor role to current user"
+      }
+    ]
+  }
 }
+
