@@ -35,6 +35,53 @@ firewall_name    = "fw-main"
 firewall_pip_name = "fw-pip"
 firewall_subnet_id = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/my-rg-dev/providers/Microsoft.Network/virtualNetworks/hub-vnet/subnets/AzureFirewallSubnet"
 
-# subresource_names = ["blob", "file", "queue", "table"]
-# resource_id = ""
-# connection_name = ""
+# infra_resource_group_name       = "rg-events"
+# location                  = "canadacentral"
+# namespace_name            = "evh-namespace-dev"
+
+# cluster_name              = "evh-cluster"
+# cluster_sku               = "Dedicated"
+
+# eventhub_name             = "my-eventhub"
+# partition_count           = 4
+# message_retention         = 3
+
+# consumer_group_name       = "cg-payments"
+# user_metadata             = "Used by payments team"
+
+# schema_group_name         = "schema-group1"
+# schema_group_properties   = {
+#   compatibility = "Forward"
+#   schema_type   = "Avro"
+# }
+
+infra_resource_group_name = "rg-events"
+location                  = "canadacentral"
+namespace_name            = "evh-namespace-dev"
+namespace_sku             = "Standard"
+namespace_capacity        = 1
+namespace_zone_redundant  = false
+namespace_auto_inflate_enabled = true
+namespace_maximum_throughput_units = 4
+tags = {
+  environment = "dev"
+  team        = "eventing"
+}
+
+cluster_name              = "evh-cluster"
+cluster_sku               = "Dedicated"
+
+eventhub_name             = "my-eventhub"
+partition_count           = 4
+message_retention         = 3
+
+consumer_group_name       = "cg-payments"
+user_metadata             = "Used by payments team"
+
+schema_group_name         = "schema-group1"
+schema_group_properties   = {
+  compatibility = "Forward"
+  schema_type   = "Avro"
+}
+
+
