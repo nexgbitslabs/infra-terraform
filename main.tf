@@ -114,6 +114,7 @@ module "consumer_group" {
   eventhub_name       = var.eventhub_name
   resource_group_name = var.resource_group_name
   user_metadata       = var.user_metadata
+  location            = var.location
 }
 
 module "schema_group" {
