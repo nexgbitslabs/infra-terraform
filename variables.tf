@@ -19,6 +19,13 @@ variable "sku_name" {
    description = "Size of the VMs"
 }
 
+
+variable "cluster_name" {
+  type        = string
+  description = "The name of the Event Hub Cluster"
+}
+
+
 variable "storage_account_name" {
    description = "Size of the VMs"
 }
@@ -37,11 +44,6 @@ variable "nat_gw_name" {
 
 variable "firewall_pip_name" {
   description = "value"
-}
-
-variable "cluster_name" {
-  type        = string
-  description = "The name of the Event Hub Cluster"
 }
 
 variable "prefix" {
