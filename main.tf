@@ -125,9 +125,7 @@ module "consumer_group" {
 module "schema_group" {
   source              = "./modules/eventhub_resources/eventhub_namespace_schema"
   name                = var.schema_group_name
-  resource_group_name = var.infra_resource_group_name
   namespace_id        = module.eventhub_namespace.id 
-  group_properties    = var.schema_group_properties
 }
 
 module "assign_contributor_role_schema" {
