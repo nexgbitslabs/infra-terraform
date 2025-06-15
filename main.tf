@@ -1,11 +1,11 @@
-data "azurerm_client_config" "current" {}
+# data "azurerm_client_config" "current" {}
 
-data "azurerm_subscription" "current" {}
+# data "azurerm_subscription" "current" {}
 
-data "azurerm_role_definition" "contributor" {
-  name = "Contributor"
-  scope = data.azurerm_subscription.current.id
-}
+# data "azurerm_role_definition" "contributor" {
+#   name = "Contributor"
+#   scope = data.azurerm_subscription.current.id
+# }
 
 #VNET MODULE
 module "resource_group" {
@@ -49,19 +49,19 @@ module "nat_gateway" {
 
 
 
-module "assign_contributor_role" {
-  source = "./modules/roles_and_permissions"
-  scope = data.azurerm_subscription.current.id
+# module "assign_contributor_role" {
+#   source = "./modules/roles_and_permissions"
+#   scope = data.azurerm_subscription.current.id
 
-  role_assignments = {
-    "Contributor" = [
-      {
-        principal_id = data.azurerm_client_config.current.object_id
-        description  = "Assign Contributor role to current user"
-      }
-    ]
-  }
-}
+#   role_assignments = {
+#     "Contributor" = [
+#       {
+#         principal_id = data.azurerm_client_config.current.object_id
+#         description  = "Assign Contributor role to current user"
+#       }
+#     ]
+#   }
+# }
 
 # PRIVATE DNS ZONE MODULE
 resource "azurerm_private_dns_zone" "privatednszone" {
@@ -130,18 +130,18 @@ module "schema_group" {
   namespace_id        = module.eventhub_namespace.id 
 }
 
-module "assign_contributor_role_schema" {
-  source = "./modules/roles_and_permissions"
-  scope  = data.azurerm_subscription.current.id
+# module "assign_contributor_role_schema" {
+#   source = "./modules/roles_and_permissions"
+#   scope  = data.azurerm_subscription.current.id
 
-  role_assignments = {
-    "Contributor" = [
-      {
-        principal_id    = data.azurerm_client_config.current.object_id
-        user_name       = "CurrentUser"
-        description     = "Assign Contributor role to current user"
-      }
-    ]
-  }
-}
+#   role_assignments = {
+#     "Contributor" = [
+#       {
+#         principal_id    = data.azurerm_client_config.current.object_id
+#         user_name       = "CurrentUser"
+#         description     = "Assign Contributor role to current user"
+#       }
+#     ]
+#   }
+# }
 
