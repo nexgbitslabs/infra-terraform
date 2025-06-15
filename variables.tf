@@ -71,15 +71,36 @@ variable "firewall_subnet_id" {
   description = "value"
   type = string
 }
-# variable "connection_name" {
-#   type = string
-# }
+variable "infra_resource_group_name" {}
+variable "infra_location" {}
+variable "namespace_name" {}
+variable "namespace_sku" {}
+variable "namespace_capacity" { default = null }
+variable "namespace_zone_redundant" { 
+  type = bool 
+  default = false 
+  }
+variable "namespace_auto_inflate_enabled" { 
+  type = bool 
+default = false 
+}
+variable "namespace_maximum_throughput_units" { 
+  type = number 
+default = null 
+}
+variable "tags" { 
+  type = map(string) 
+default = {} 
+}
 
-# variable "resource_id" {
-#   type = string
-# }
+variable "eventhub_name" {}
+variable "partition_count" { default = 2 }
+variable "message_retention" { default = 1 }
 
-# variable "subresource_names" {
-#   type        = list(string)
-#   description = "List of subresource names to connect to (e.g., ['blob'], ['vault'])"
-# }
+variable "consumer_group_name" {}
+variable "user_metadata" { default = null }
+
+variable "schema_group_name" {}
+variable "schema_group_properties" {
+  type = map(string)
+}
