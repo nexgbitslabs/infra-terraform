@@ -54,7 +54,7 @@ firewall_subnet_id = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resour
 #   compatibility = "Forward"
 #   schema_type   = "Avro"
 # }
-
+infra_location = "canadacentral"
 infra_resource_group_name = "rg-events"
 namespace_name            = "evh-namespace-dev"
 namespace_sku             = "Standard"
