@@ -102,7 +102,6 @@ default = {}
 }
 
 variable "eventhub_name" {}
-variable "namespace_id" {}
 variable "partition_count" { default = 2 }
 variable "message_retention" { default = 1 }
 
