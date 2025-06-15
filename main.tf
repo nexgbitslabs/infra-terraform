@@ -106,13 +106,12 @@ module "eventhub_namespace" {
 
 module "eventhub" {
   source        = "./modules/eventhub_resources/eventhub"
-  name          = "my-eventhub"
+  resource_group_name = var.infra_resource_group_name
+  location = var.location
   namespace_id  = module.eventhub_namespace.id  # <- ✅ this must be a full resource ID
   partition_count   = 2
   message_retention = 7
   status            = "Active"
-  capture_description = null
-  tags              = { environment = "dev" }
 }
 
 module "consumer_group" {
