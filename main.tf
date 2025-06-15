@@ -92,7 +92,7 @@ module "eventhub_cluster" {
 
 module "eventhub_namespace" {
   source                  = "./modules/eventhub_resources/namespaces"
-  name                    = var.namespace_name
+  namespace_name          = var.namespace_name
   resource_group_name     = var.infra_resource_group_name
   location                = var.location
   sku                     = var.namespace_sku
