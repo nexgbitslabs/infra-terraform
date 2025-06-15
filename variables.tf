@@ -104,3 +104,22 @@ variable "schema_group_name" {}
 variable "schema_group_properties" {
   type = map(string)
 }
+
+#----------Role Assignment--------------
+variable "scope" {
+  description = "The Azure scope for role assignments."
+  type        = string
+}
+
+variable "role_assignments" {
+  description = "Map of role names to list of assignment objects."
+  type = map(list(object({
+    principal_id                        = string
+    user_name                         = optional(string)
+    group_name                        = optional(string)
+    serviceprincipal_name             = optional(string)
+    description                      = optional(string)
+    privileged_access_validation_enabled = optional(bool, true)
+    condition                       = optional(string)
+  })))
+}

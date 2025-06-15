@@ -84,4 +84,49 @@ schema_group_properties   = {
   schema_type   = "Avro"
 }
 
+#-------Role Assignments Tfvars--------------
+scope = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/rg-events"
+
+role_assignments = {
+  Reader = [
+    {
+      user_name    = "example_user@nexgbitsgd.com"
+      principal_id = "11111111-1111-1111-1111-111111111111"
+      description  = "Non-privileged access granted to non-admin user."
+    }
+  ]
+
+  Contributor = [
+    {
+      serviceprincipal_name = "terraform-sp"
+      principal_id          = "96a181fb-01e1-4a8d-8941-32c798319ae8"
+      description          = "Privileged access granted to Service Principal."
+    },
+    {
+      group_name   = "INFRA_ADMINS"
+      principal_id = "96a181fb-01e1-4a8d-8941-32c798319ae8"
+      description = "Privileged access granted to admin acl."
+    },
+    {
+      user_name    = "example_user_adm@nexgbitsgd.com"
+      principal_id = "44444444-4444-4444-4444-444444444444"
+      description = "Privileged access granted to admin user."
+    },
+    {
+      user_name                            = "valentine.akem@hq.nexgbits.com"
+      principal_id                         = "96a181fb-01e1-4a8d-8941-32c798319ae8"
+      description                          = "Privileged access granted to non-admin user by exception."
+      privileged_access_validation_enabled = false
+    }
+  ]
+
+  "nexgbits-custom-user-access-admin" = [
+    {
+      serviceprincipal_name = "example_spn"
+      principal_id          = "66666666-6666-6666-6666-666666666666"
+      description          = "Reserved access granted to Service Principal."
+    }
+  ]
+}
+
 
