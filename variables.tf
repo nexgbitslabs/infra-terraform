@@ -11,6 +11,14 @@ variable "subscription_id" {
    description = "Size of the VMs"
 }
 
+variable "sku_tier" {
+   description = "Size of the VMs"
+}
+
+variable "sku_name" {
+   description = "Size of the VMs"
+}
+
 variable "storage_account_name" {
    description = "Size of the VMs"
 }

@@ -44,9 +44,6 @@ module "nat_gateway" {
   resource_group_name = var.infra_resource_group_name
   subnet_id           = module.hub_vnet.subnet_ids["AzureFirewallSubnet"]
   environment         = var.environment
-
-
-
   depends_on = [ module.hub_vnet ]
 }
 
@@ -75,6 +72,8 @@ module "firewall" {
   firewall_name       = var.firewall_name
   firewall_pip_name   = var.firewall_pip_name
   firewall_subnet_id = var.firewall_subnet_id
+  sku_tier           = var.sku_tier
+  sku_name           = var.sku_name
 
   depends_on = [ module.hub_vnet ]
 }
