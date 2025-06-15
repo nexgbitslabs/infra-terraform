@@ -115,7 +115,7 @@ module "eventhub" {
 module "consumer_group" {
   source              = "./modules/eventhub_resources/eventhub_consumer_groups"
   name                = var.consumer_group_name
-  namespace_name      = module.eventhub_namespace.name
+  namespace_id      = module.eventhub_namespace.id
   eventhub_name       = var.eventhub_name
   resource_group_name = var.resource_group_name
   user_metadata       = var.user_metadata
