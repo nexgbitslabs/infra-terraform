@@ -115,7 +115,7 @@ module "consumer_group" {
 module "schema_group" {
   source              = "./modules/eventhub_resources/eventhub_namespace_schema"
   name                = var.schema_group_name
-  namespace_name      = module.eventhub_namespace.name
+  namespace_id     = module.eventhub_namespace.id
   resource_group_name = var.resource_group_name
   group_properties    = var.schema_group_properties
 }
