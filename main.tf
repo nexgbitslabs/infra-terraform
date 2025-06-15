@@ -84,7 +84,7 @@ module "firewall" {
 
 module "eventhub_cluster" {
   source              = "./modules/eventhub_resources/eventhub_cluster"
-  name                = var.cluster_name
+  cluster_name         = var.cluster_name
   resource_group_name = var.infra_resource_group_name
   location            = var.location
   sku_name            = var.cluster_sku
