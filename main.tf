@@ -105,7 +105,7 @@ module "eventhub_namespace" {
 
 module "eventhub" {
   source              = "./modules/eventhub_resources/eventhub"
-  namespace_id      = module.eventhub_namespace.id
+  eventhub_name        = var.eventhub_name
   resource_group_name = var.infra_resource_group_name
   location            = var.location
   partition_count     = var.partition_count
@@ -115,7 +115,6 @@ module "eventhub" {
 module "consumer_group" {
   source              = "./modules/eventhub_resources/eventhub_consumer_groups"
   name                = var.consumer_group_name
-  namespace_id      = module.eventhub_namespace.id
   eventhub_name       = var.eventhub_name
   resource_group_name = var.resource_group_name
   user_metadata       = var.user_metadata
