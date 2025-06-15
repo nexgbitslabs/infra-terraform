@@ -12,14 +12,12 @@ module "resource_group" {
   source              = "./modules/resource_group"
   resource_group_name = var.resource_group_name
   location            = var.location
-  environment         = var.environment
 }
 
 module "infra_resource_group" {
   source              = "./modules/resource_group"
   resource_group_name = var.infra_resource_group_name
   location            = var.location
-  environment         = var.environment
 }
 
 module "hub_vnet" {
@@ -101,8 +99,7 @@ module "eventhub_namespace" {
 
 module "eventhub" {
   source              = "./modules/eventhub_resources/eventhub"
-  name                = var.eventhub_name
-  namespace_name      = module.eventhub_namespace.name
+  namespace_id      = module.eventhub_namespace.id
   resource_group_name = var.infra_resource_group_name
   location            = var.location
   partition_count     = var.partition_count
@@ -116,6 +113,7 @@ module "consumer_group" {
   eventhub_name       = var.eventhub_name
   resource_group_name = var.resource_group_name
   user_metadata       = var.user_metadata
+  location            = var.location
 }
 
 module "schema_group" {
