@@ -47,7 +47,7 @@ module "nat_gateway" {
 
 
 module "assign_contributor_role" {
-  source            = "./modules/role_and_permissions"
+  source            = "./modules/roles_and_permissions"
   scope             = data.azurerm_subscription.current.id
   role_definition_id = data.azurerm_role_definition.contributor.id
   principal_id      = data.azurerm_client_config.current.object_id
@@ -118,4 +118,11 @@ module "schema_group" {
   namespace_name      = module.eventhub_namespace.name
   resource_group_name = var.resource_group_name
   group_properties    = var.schema_group_properties
+}
+
+module "role_assignment" {
+  source = "./module/resource-group"
+
+  scope            = var.scope
+  role_assignments = var.role_assignments
 }
