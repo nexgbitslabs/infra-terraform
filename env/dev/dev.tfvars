@@ -56,7 +56,6 @@ firewall_subnet_id = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resour
 # }
 
 infra_resource_group_name = "rg-events"
-location                  = "canadacentral"
 namespace_name            = "evh-namespace-dev"
 namespace_sku             = "Standard"
 namespace_capacity        = 1
