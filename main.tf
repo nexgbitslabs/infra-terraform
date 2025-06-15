@@ -88,7 +88,7 @@ module "eventhub_cluster" {
   cluster_name         = var.cluster_name
   resource_group_name = var.infra_resource_group_name
   location            = var.location
-  sku_name            = var.sku_name
+  sku_name            = "Dedicated_1"
 }
 
 module "eventhub_namespace" {
