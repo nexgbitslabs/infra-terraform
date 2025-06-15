@@ -122,8 +122,10 @@ module "schema_group" {
 }
 
 module "role_assignment" {
-  source = "./module/resource_group"
+  source = "./modules/roles_and_permissions"
 
-  scope            = var.scope
-  role_assignments = var.role_assignments
+  scope             = var.scope
+  role_definition_id = var.role_definition_id
+  principal_id      = var.principal_id
+  description       = "Assign Contributor role to current user"
 }
