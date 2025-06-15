@@ -49,11 +49,17 @@ module "nat_gateway" {
 
 
 module "assign_contributor_role" {
-  source            = "./modules/roles_and_permissions"
-  scope             = data.azurerm_subscription.current.id
-  role_definition_id = data.azurerm_role_definition.contributor.id
-  principal_id      = data.azurerm_client_config.current.object_id
-  description       = "Assign Contributor role to current user"
+  source = "./modules/roles_and_permissions"
+  scope = data.azurerm_subscription.current.id
+
+  role_assignments = {
+    "Contributor" = [
+      {
+        principal_id = data.azurerm_client_config.current.object_id
+        description  = "Assign Contributor role to current user"
+      }
+    ]
+  }
 }
 
 # PRIVATE DNS ZONE MODULE
@@ -119,9 +125,7 @@ module "consumer_group" {
 module "schema_group" {
   source              = "./modules/eventhub_resources/eventhub_namespace_schema"
   name                = var.schema_group_name
-  resource_group_name = var.infra_resource_group_name
   namespace_id        = module.eventhub_namespace.id 
-  group_properties    = var.schema_group_properties
 }
 
 module "assign_contributor_role_schema" {
