@@ -117,10 +117,10 @@ variable "message_retention" { default = 1 }
 variable "consumer_group_name" {}
 variable "user_metadata" { default = null }
 
-variable "schema_group_name" {}
-variable "schema_group_properties" {
-  type = map(string)
-}
+# variable "schema_group_name" {}
+# variable "schema_group_properties" {
+#   type = map(string)
+# }
 
 #----------Role Assignment--------------
 variable "scope" {
