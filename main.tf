@@ -124,11 +124,11 @@ module "consumer_group" {
   location            = var.location
 }
 
-module "schema_group" {
-  source              = "./modules/eventhub_resources/eventhub_namespace_schema"
-  name                = var.schema_group_name
-  namespace_id        = module.eventhub_namespace.id 
-}
+# module "schema_group" {
+#   source              = "./modules/eventhub_resources/eventhub_namespace_schema"
+#   name                = var.schema_group_name
+#   namespace_id        = module.eventhub_namespace.id 
+# }
 
 # module "assign_contributor_role_schema" {
 #   source = "./modules/roles_and_permissions"

@@ -79,11 +79,11 @@ message_retention         = 3
 consumer_group_name       = "cg-payments"
 user_metadata             = "Used by payments team"
 
-schema_group_name         = "schema-group1"
-schema_group_properties   = {
-  compatibility = "Forward"
-  schema_type   = "Avro"
-}
+# schema_group_name         = "schema-group1"
+# schema_group_properties   = {
+#   compatibility = "Forward"
+#   schema_type   = "Avro"
+# }
 
 #-------Role Assignments Tfvars--------------
 scope = "/subscriptions/a3fcb44b-8229-4e41-99c5-fbebb9ffb8bf/resourceGroups/rg-events"
