@@ -70,26 +70,26 @@ resource "azurerm_private_dns_zone" "privatednszone" {
 }
 
 # FIREWALL MODULE
-module "firewall" {
-  source              = "./modules/firewall"
-  location            = var.location
-  resource_group_name = var.infra_resource_group_name
-  firewall_name       = var.firewall_name
-  firewall_pip_name   = var.firewall_pip_name
-  firewall_subnet_id = var.firewall_subnet_id
-  sku_tier           = var.sku_tier
-  sku_name           = var.sku_name
+# module "firewall" {
+#   source              = "./modules/firewall"
+#   location            = var.location
+#   resource_group_name = var.infra_resource_group_name
+#   firewall_name       = var.firewall_name
+#   firewall_pip_name   = var.firewall_pip_name
+#   firewall_subnet_id = var.firewall_subnet_id
+#   sku_tier           = var.sku_tier
+#   sku_name           = var.sku_name
 
-  depends_on = [ module.hub_vnet ]
-}
+#   depends_on = [ module.hub_vnet ]
+# }
 
-module "eventhub_cluster" {
-  source              = "./modules/eventhub_resources/eventhub_cluster"
-  cluster_name         = var.cluster_name
-  resource_group_name = var.infra_resource_group_name
-  location            = var.location
-  sku_name            = "Dedicated_1"
-}
+# module "eventhub_cluster" {
+#   source              = "./modules/eventhub_resources/eventhub_cluster"
+#   cluster_name         = var.cluster_name
+#   resource_group_name = var.infra_resource_group_name
+#   location            = var.location
+#   sku_name            = "Dedicated_1"
+# }
 
 module "eventhub_namespace" {
   source                  = "./modules/eventhub_resources/namespaces"
