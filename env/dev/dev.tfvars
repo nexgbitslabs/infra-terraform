@@ -69,8 +69,8 @@ tags = {
   team        = "eventing"
 }
 
-cluster_name              = "evh-cluster"
-cluster_sku               = "Dedicated"
+# cluster_name              = "evh-cluster"
+# cluster_sku               = "Dedicated"
 
 eventhub_name             = "my-eventhub"
 partition_count           = 4
