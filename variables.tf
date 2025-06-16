@@ -20,10 +20,10 @@ variable "sku_name" {
 }
 
 
-variable "cluster_name" {
-  type        = string
-  description = "The name of the Event Hub Cluster"
-}
+# variable "cluster_name" {
+#   type        = string
+#   description = "The name of the Event Hub Cluster"
+# }
 
 variable "security_gp_name" {
     type        = string
