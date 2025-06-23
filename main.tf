@@ -5,7 +5,7 @@ module "resource_group" {
   location            = var.location
 }
 
-module "infra_resource_group" {
+module "resource_group" {
   source              = "./modules/resource_group"
   resource_group_name = var.infra_resource_group
   location            = var.location
