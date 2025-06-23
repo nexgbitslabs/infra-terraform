@@ -5,6 +5,12 @@ module "resource_group" {
   location            = var.location
 }
 
+module "infra_resource_group" {
+  source              = "./modules/resource_group"
+  resource_group_name = var.infra_resource_group
+  location            = var.location
+}
+
 module "hub_vnet" {
   source              = "./modules/vnet"  # or wherever the vnet module is stored
   hub_vnet_name       = var.hub_vnet_name
@@ -16,7 +22,7 @@ module "hub_vnet" {
   dns_servers         = var.dns_servers
   security_gp_name    = var.security_gp_name
 
-  depends_on = [ module.resource_group ]
+  depends_on = [ module.resource_group, infra_resource_group ]
 }
 
 # NAT GATEWAY MODULE
@@ -28,5 +34,5 @@ module "nat_gateway" {
   resource_group_name = var.infra_resource_group_name
   subnet_id           = module.hub_vnet.subnet_ids["AzureFirewallSubnet"]
   environment         = var.environment
-  depends_on = [ module.hub_vnet ]
+  depends_on = [ module.hub_vnet, infra_resource_group ]
 }
