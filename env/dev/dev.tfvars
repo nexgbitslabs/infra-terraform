@@ -10,10 +10,18 @@ hub_vnet_address_space       = ["10.100.0.0/16"]
 subnets = {
   AzureFirewallSubnet = {
     address_prefixes      = ["10.100.1.0/24"]
-    allowPrivateEndpoints = false
+    allowPrivateEndpoints = true
   },
   PrivateLinkSubnet = {
     address_prefixes      = ["10.100.2.0/24"]
+    allowPrivateEndpoints = true
+  },
+  ApimSubnet = {
+    address_prefixes      = ["10.100.3.0/24"]
+    allowPrivateEndpoints = true
+  }
+  EventHubsSubnet = {
+    address_prefixes      = ["10.100.4.0/24"]
     allowPrivateEndpoints = true
   }
 }
